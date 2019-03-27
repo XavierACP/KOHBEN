@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+
+    <div class="alert alert-danger" role="alert">
+        <span >You've been successfully disconnected. Going to home page...</span>
+        <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status"></div>
+    </div>
+</div>
+
+  <script>
+    // Your application has indicated there's an error
+    window.setTimeout(function(){
+        // Move to a new location or you can do something else
+        window.location.href = "{% url 'index' %}";
+    }, 2000);
+
+</script>
+</div>
+{% endblock %}

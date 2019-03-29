@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LogoutView, LoginView
-from sales.views import IndexView, BlogView, PostView, RegisterView, RegisterOk
+from sales.views import IndexView, BlogView, PostView, RegisterView, AboutView, ContactView, RegisterOk
 from django.contrib.auth import views as auth_views
 
 
@@ -27,11 +27,15 @@ urlpatterns = [
     path('index', IndexView.as_view(), name='index'),
     path('blog', BlogView.as_view(), name='blog'),
     path('post', PostView.as_view(), name='post'),
+    path('about', AboutView.as_view(), name='about'),
+    path('contact', ContactView.as_view(), name='contact'),
     path('login', PostView.as_view(), name='post'),
     path('accounts/login/', LoginView.as_view(template_name='login.html'), name='login'),
     path('accounts/logout/', LogoutView.as_view(template_name='logout.html'), name='logout'),
     url(r'register', RegisterView.as_view(), name='register'),
-#     path('regOk', RegisterOk.as_view(), name='registerOk'),
+    path('regOk', RegisterOk.as_view(), name='registerOk'),
+
+    #     path('regOk', RegisterOk.as_view(), name='registerOk'),
 # # for password reset views:
 #     url('^', include('django.contrib.auth.urls')),
 #     url(r'^password_reset/$', auth_views.PasswordResetView, {'template_name': 'accounts/password_reset_form'},

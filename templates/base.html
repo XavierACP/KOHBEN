@@ -1,116 +1,390 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html LANG="FR">
+<html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap Blog - B4 Template by Bootstrap Temple</title>
+    <title>Kohben : une vie saine</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css'%}">
-    <!-- Custom icon font-->
-    <link rel="stylesheet" href="{% static 'css/fontastic.css'%}">
-    <!-- Google fonts - Open Sans-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <!-- Fancybox-->
-    <link rel="stylesheet" href="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/owl.carousel/assets/owl.theme.default.css' %}">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="{% static 'css/style.default.css'%}" id="theme-stylesheet'%}">
+    <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="{% static 'css/custom.css'%}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{% static 'img/favicon.png'%}">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}' %}">
+    <!-- Tweaks for older IEs-->
+
   </head>
   <body>
-    <header class="header">
-      <!-- Main Navbar-->
-      <nav class="navbar navbar-expand-lg">
-        <div class="search-area">
-          <div class="search-area-inner d-flex align-items-center justify-content-center">
-            <div class="close-btn"><i class="icon-close"></i></div>
-            <div class="row d-flex justify-content-center">
-              <div class="col-md-8">
-                <form action="#">
-                  <div class="form-group">
-                    <input type="search" name="search" id="search" placeholder="What are you looking for?">
-                    <button type="submit" class="submit"><i class="icon-search-1"></i></button>
-                  </div>
-                </form>
-              </div>
+    <!-- navbar-->
+    <header class="header mb-5">
+      <!--
+      *** TOPBAR ***
+      _________________________________________________________
+      -->
+      <div id="top">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offre du jour</a><a href="#" class="ml-1">-35% à partir de 50€ d'achat !</a></div>
+            <div class="col-lg-6 text-center text-lg-right">
+              <ul class="menu list-inline mb-0">
+                <li class="list-inline-item"><a href="{% url 'register' %}">S'enregistrer</a></li>
+                <li class="list-inline-item"><a href="{% url 'post' %}">Post</a></li>
+                <li class="list-inline-item"><a href="{% url 'contact' %}">Contact</a></li>
+                <li class="list-inline-item"><a href="{% url 'about' %}">About</a></li>
+                <li class="list-inline-item"><a href="#"></a></li>
+                    {% if request.user.is_authenticated %}
+                        <li class="list-inline-item"><a href="{% url 'logout' %}">Déconnection</a></li>
+                    {% else %}
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Se connecter</a></li>
+                    {% endif %}
+              </ul>
             </div>
           </div>
         </div>
+        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+          <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Customer login</h5>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+              </div>
+              <div class="modal-body">
+                 <article>
+                        <form action="{% url 'login' %}" method="post">
+                            {% csrf_token %}
+                               <div class="form-group">
+                                 <input id="id_username" type="text" placeholder="pseudo" name="username"  class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="password" class="form-control" name="password" required>
+                                <input type="hidden" name="next" value="{{ next }}">
+                            </div>
+                            <p class="text-center">
+                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                            </p>
+                         </form>
+                             {% if form.errors %}
+                                 <p>Votre pseudo ou votre mot de passe est incorrect .</p>
+                             {% endif %}
+                            <p class="text-center text-muted">Pas encore enregistré ?</p>
+                            <p class="text-center text-muted"><a href="{% url 'register' %}">
+                                <strong>Register now</strong></a>
+                                    ! It is easy and done in 1 minute and gives you access to special discounts and much more!
+                            </p>
+                            <a href="#" class="bottom-text-w3ls">Forgot Password?</a>
+                </article>
+                </div>
+                {% if next %}
+                    {% if user.is_authenticated %}
+                        <p>Vous pouvez accéder à votre compte</p>
+                    {% else %}
+                        <p>Connectez vous pour voir cette page</p>
+                    {% endif %}
+                {% endif %}
+
+        <!-- *** TOP BAR END ***-->
+     </div>
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <!-- Navbar Brand -->
-          <div class="navbar-header d-flex align-items-center justify-content-between">
-            <!-- Navbar Brand --><a href="{% url 'index' %}" class="navbar-brand">Kohben blog</a>
-            <!-- Toggle Button-->
-            <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
+            <a href="{% url 'index' %}" class="navbar-brand home">
+                <img src="{% static 'img/logo.png' %}" alt="Obaju logo" class="d-none d-md-inline-block">
+                <img src="{% static 'img/logo-small.png' %}" alt="Obaju logo" class="d-inline-block d-md-none">
+                <span class="sr-only">Obaju - go to homepage</span>
+            </a>
+          <div class="navbar-buttons">
+            <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
+            <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.html" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
           </div>
-          <!-- Navbar Menu -->
-          <div id="navbarcollapse" class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="{% url 'index'%}" class="nav-link active ">Home</a>
+          <div id="navigation" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active">Home</a></li>
+              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Homme<b class="caret"></b></a>
+                <ul class="dropdown-menu megamenu">
+                  <li>
+                    <div class="row">
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Clothing</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">T-shirts</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Shirts</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Pants</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Accessories</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Shoes</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Accessories</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Featured</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                        </ul>
+                        <h5>Looks and trends</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </li>
-              <li class="nav-item"><a href="{% url 'blog'%}" class="nav-link ">Blog</a>
+              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Femelle<b class="caret"></b></a>
+                <ul class="dropdown-menu megamenu">
+                  <li>
+                    <div class="row">
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Savons</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Gras</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Surgras</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Recettes</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Accessoires</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Crèmes</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Visage</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Corps</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Mains</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Pieds</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Gel douche</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Moussants</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Shampooing</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hydratants</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Autres</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Casual</a></li>
+                        </ul>
+                        <h5>Looks and trends</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Hiking shoes</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <div class="banner"><a href="#"><img src="{% static 'img/banner.jpg' %}" alt="" class="img img-fluid"></a></div>
+                        <div class="banner"><a href="#"><img src="{% static 'img/banner2.jpg' %}" alt="" class="img img-fluid"></a></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </li>
-              <li class="nav-item"><a href="{% url 'post'%}" class="nav-link ">Post</a>
+              <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">Template<b class="caret"></b></a>
+                <ul class="dropdown-menu megamenu">
+                  <li>
+                    <div class="row">
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Shop</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="index.html" class="nav-link">Homepage</a></li>
+                          <li class="nav-item"><a href="category.html" class="nav-link">Category - sidebar left</a></li>
+                          <li class="nav-item"><a href="category-right.html" class="nav-link">Category - sidebar right</a></li>
+                          <li class="nav-item"><a href="category-full.html" class="nav-link">Category - full width</a></li>
+                          <li class="nav-item"><a href="detail.html" class="nav-link">Product detail</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>User</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="register.html" class="nav-link">Register / login</a></li>
+                          <li class="nav-item"><a href="customer-orders.html" class="nav-link">Orders history</a></li>
+                          <li class="nav-item"><a href="customer-order.html" class="nav-link">Order history detail</a></li>
+                          <li class="nav-item"><a href="customer-wishlist.html" class="nav-link">Wishlist</a></li>
+                          <li class="nav-item"><a href="customer-account.html" class="nav-link">Customer account / change password</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Order process</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="basket.html" class="nav-link">Shopping cart</a></li>
+                          <li class="nav-item"><a href="checkout1.html" class="nav-link">Checkout - step 1</a></li>
+                          <li class="nav-item"><a href="checkout2.html" class="nav-link">Checkout - step 2</a></li>
+                          <li class="nav-item"><a href="checkout3.html" class="nav-link">Checkout - step 3</a></li>
+                          <li class="nav-item"><a href="checkout4.html" class="nav-link">Checkout - step 4</a></li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6 col-lg-3">
+                        <h5>Pages and blog</h5>
+                        <ul class="list-unstyled mb-3">
+                          <li class="nav-item"><a href="blog.html" class="nav-link">Blog listing</a></li>
+                          <li class="nav-item"><a href="post.html" class="nav-link">Blog Post</a></li>
+                          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                          <li class="nav-item"><a href="text.html" class="nav-link">Text page</a></li>
+                          <li class="nav-item"><a href="text-right.html" class="nav-link">Text page - right sidebar</a></li>
+                          <li class="nav-item"><a href="404.html" class="nav-link">404 page</a></li>
+                          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
-              </li>
-                {% if request.user.is_authenticated %}
-                  <li class="nav-item"><a href="{% url 'logout'%}" class="nav-link ">Logout</a></li>
-              {% else %}
-                  <li class="nav-item"><a href="{% url 'login'%}" class="nav-link ">Login</a></li>
-              {% endif %}
             </ul>
-            <div class="navbar-text">
-                <a href="#" class="search-btn"><i class="icon-search-1"></i></a>
+            <div class="navbar-buttons d-flex justify-content-end">
+              <!-- /.nav-collapse-->
+              <div id="search-not-mobile" class="navbar-collapse collapse"></div><a data-toggle="collapse" href="#search" class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
+              <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
             </div>
-
-            <ul class="langs navbar-text">
-                <a href="#" class="active">EN</a>
-                <span>           </span>
-                <a href="#">FR</a>
-
-            </ul>
-
           </div>
         </div>
       </nav>
-    </header>
-{% block content %}
-{% endblock %}
-<footer>
-      <div class="copyrights">
+      <div id="search" class="collapse">
         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2019. All rights reserved. Caroline et Xavier.</p>
+          <form role="search" class="ml-auto">
+            <div class="input-group">
+              <input type="text" placeholder="Search" class="form-control">
+              <div class="input-group-append">
+                <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+              </div>
             </div>
-            <div class="col-md-6 text-right">
-              <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel" class="text-white">Bootstrapious</a>
-                <!-- Please do not remove the backlink to Bootstrap Temple unless you purchase an attribution-free license @ Bootstrap Temple or support us at http://bootstrapious.com/donate. It is part of the license conditions. Thanks for understanding :)                         -->
-              </p>
-            </div>
+          </form>
+        </div>
+      </div>
+    </header>
+
+{% block content %}
+
+
+
+{% endblock %}
+    <!--
+    *** FOOTER ***
+    _________________________________________________________
+    -->
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <h4 class="mb-3">Pages</h4>
+            <ul class="list-unstyled">
+              <li><a href="text.html">About us</a></li>
+              <li><a href="text.html">Terms and conditions</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="contact.html">Contact us</a></li>
+            </ul>
+            <hr>
+            <h4 class="mb-3">User section</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+              <li><a href="register.html">Regiter</a></li>
+            </ul>
+          </div>
+          <!-- /.col-lg-3-->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="mb-3">Top categories</h4>
+            <h5>Men</h5>
+            <ul class="list-unstyled">
+              <li><a href="category.html">T-shirts</a></li>
+              <li><a href="category.html">Shirts</a></li>
+              <li><a href="category.html">Accessories</a></li>
+            </ul>
+            <h5>Ladies</h5>
+            <ul class="list-unstyled">
+              <li><a href="category.html">T-shirts</a></li>
+              <li><a href="category.html">Skirts</a></li>
+              <li><a href="category.html">Pants</a></li>
+              <li><a href="category.html">Accessories</a></li>
+            </ul>
+          </div>
+          <!-- /.col-lg-3-->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="mb-3">Where to find us</h4>
+            <p><strong>Obaju Ltd.</strong><br>13/25 New Avenue<br>New Heaven<br>45Y 73J<br>England<br><strong>Great Britain</strong></p><a href="contact.html">Go to contact page</a>
+            <hr class="d-block d-md-none">
+          </div>
+          <!-- /.col-lg-3-->
+          <div class="col-lg-3 col-md-6">
+            <h4 class="mb-3">Get the news</h4>
+            <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <form>
+              <div class="input-group">
+                <input type="text" class="form-control"><span class="input-group-append">
+                  <button type="button" class="btn btn-outline-secondary">Subscribe!</button></span>
+              </div>
+              <!-- /input-group-->
+            </form>
+            <hr>
+            <h4 class="mb-3">Stay in touch</h4>
+            <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
+          </div>
+          <!-- /.col-lg-3-->
+        </div>
+        <!-- /.row-->
+      </div>
+      <!-- /.container-->
+    </div>
+    <!-- /#footer-->
+    <!-- *** FOOTER END ***-->
+
+
+    <!--
+    *** COPYRIGHT ***
+    _________________________________________________________
+    -->
+    <div id="copyright">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-2 mb-lg-0">
+            <p class="text-center text-lg-left">©2019 Caroline et Xavier.</p>
+          </div>
+          <div class="col-lg-6">
+            <p class="text-center text-lg-right">Template design by <a href="https://bootstrapious.com/p/big-bootstrap-tutorial">Bootstrapious</a>
+              <!-- If you want to remove this backlink, pls purchase an Attribution-free License @ https://bootstrapious.com/p/obaju-e-commerce-template. Big thanks!-->
+            </p>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+    <!-- *** COPYRIGHT END ***-->
     <!-- JavaScript files-->
+{#    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>#}
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/popper.js/umd/popper.min.js' %}"> </script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'vendor/jquery.cookie/jquery.cookie.js' %}"> </script>
-    <script src="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js' %}"></script>
     <script src="{% static 'js/front.js' %}"></script>
+{#    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>#}
   </body>
 </html>

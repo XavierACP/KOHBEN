@@ -3,23 +3,22 @@
 
 {% block content %}
     <!-- Font Icon -->
-    <link rel="stylesheet" href="{% static 'regForm/fonts/material-icon/css/material-design-iconic-font.min.css'%}">
-    <!-- Main css -->
-    <link rel="stylesheet" href="{% static 'regForm/css/style.css'%}">
+{#    <link rel="stylesheet" href="{% static 'regForm/fonts/material-icon/css/material-design-iconic-font.min.css'%}">#}
+{#    <!-- Main css -->#}
+{#    <link rel="stylesheet" href="{% static 'regForm/css/style.css'%}">#}
     <div class="main" >
         <section class="signup">
-
             <div class="container" >
-                <div class="signup-content" style="color:green; background: url({%static 'regForm/images/bien-etre.jpg'%});
-                                background-size: cover; background-position: center center;">
+                <div class="signup-content" style="color:green;background-size: cover; background-position: center ;">
+{#                     background: url({%static 'regForm/images/bien-etre.jpg'%})#}
                     <form  id="signup-form" class="signup-form" >
-                        <h2 class="form-title"  class="hero"> Enregistré </h2>
+                        <h2 class="form-title" > Vous avez été correctement enregistré. </h2>
                         <br>
                          <h2>Redirection en cours...</h2>
                         <script>
                             window.setTimeout(function(){
                             window.location.href = "{% url 'index' %}";
-                                }, 2000);
+                                }, 10000);
                         </script>
                      </form>
                 </div>

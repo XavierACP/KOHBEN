@@ -28,7 +28,6 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.contrib.auth.decorators import login_required
 
 
-
 class IndexView(TemplateView):
     template_name = 'index.html'
 
@@ -39,6 +38,14 @@ class BlogView(TemplateView):
 
 class PostView(TemplateView):
     template_name = 'post.html'
+
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
+
+
+class ContactView(TemplateView):
+    template_name = 'contact.html'
 
 
 class LoginView(SuccessURLAllowedHostsMixin, FormView):

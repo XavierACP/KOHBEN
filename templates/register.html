@@ -31,24 +31,25 @@
                                     {% for field in form %}
                                         <div class="form-group">
                                             <label for="pseudo">{{ field.label_tag }}</label><br>
-{#                                            <input id="pseudo" type="text" class="form-control" value="{{ field }}"/>#}
-                                        {{ field }}
+                                            {#                                            <input id="pseudo" type="text" class="form-control" value="{{ field }}"/>#}
+                                            {{ field }}
                                         </div>
                                         {% for error in field.errors %}
                                             <p style="color: red">{{ error }}</p>
                                         {% endfor %}
                                     {% endfor %}
-                                     <div class="text-center">
-                                            <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"> S'enregistrer</i>
-                                            </button>
-{#                                            <input type="submit" name="submit" id="submit" class="fa fa-sign-in" value="S'enregistrer"/>#}
-                                            <input type="hidden" name="next" value="{{ next }}">
-                                     </div>
-                                     {% if next %}
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in">
+                                            S'enregistrer</i>
+                                        </button>
+                                        {#                                            <input type="submit" name="submit" id="submit" class="fa fa-sign-in" value="S'enregistrer"/>#}
+                                        <input type="hidden" name="next" value="{{ next }}">
+                                    </div>
+                                    {% if next %}
                                         {% if user.is_authenticated %}
                                             <p>Vous pouvez accéder à votre compte</p>
                                         {% else %}
-                                         <p>Connectez vous pour voir cette page</p>
+                                            <p>Connectez vous pour voir cette page</p>
                                         {% endif %}
                                     {% endif %}
                                 </div>
@@ -65,7 +66,7 @@
                                 sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae
                                 est. Mauris placerat eleifend leo.</p>
                             <hr>
-                            <form action="{% url 'index' %}" method="post">
+                            <form action="{% url 'login' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
                                     <label for="id_username">Nom d'utilisateur</label>
@@ -73,23 +74,31 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input id="password" type="password" class="form-control">
+                                    <input name="password" type="password" class="form-control">
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in
                                     </button>
+                                    <input type="hidden" name="next" value="{{ next }}">
                                 </div>
                             </form>
-                                {% if form.errors %}
-                                    <p>Votre login ou votre mot de passe est incorrect .</p>
+                            {% if form.errors %}
+                                <p>Votre login ou votre mot de passe est incorrect .</p>
+                            {% endif %}
+                            {% if next %}
+                                {% if user.is_authenticated %}
+                                    <p>Vous pouvez accéder à votre compte</p>
+                                {% else %}
+                                    <p>Connectez vous pour voir cette page</p>
                                 {% endif %}
-                                {% if next %}
-                                    {% if user.is_authenticated %}
-                                        <p>Vous pouvez accéder à votre compte</p>
-                                    {% else %}
-                                        <p>Connectez vous pour voir cette page</p>
-                                    {% endif %}
+                            {% endif %}
+                            {% if next %}
+                                {% if user.is_authenticated %}
+                                    <p>Vous pouvez accéder à votre compte</p>
+                                {% else %}
+                                    <p>Connectez vous pour voir cette page</p>
                                 {% endif %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>

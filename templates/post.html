@@ -2,186 +2,432 @@
 {% load static %}
 
 {%  block content %}
-<div class="container">
-      <div class="row">
-        <!-- Latest Posts -->
-        <main class="post blog-post col-lg-8">
-          <div class="container">
-            <div class="post-single">
-              <div class="post-thumbnail"><img src="{% static 'img/blog-post-3.jpeg'%}" alt="..." class="img-fluid"></div>
-              <div class="post-details">
-                <div class="post-meta d-flex justify-content-between">
-                  <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
-                </div>
-                <h1>Diversity in Engineering: The Effect on Questions<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
-                <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{% static 'img/avatar-1.jpg'%}" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
-                  <div class="d-flex align-items-center flex-wrap">
-                    <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                    <div class="views"><i class="icon-eye"></i> 500</div>
-                    <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                  </div>
-                </div>
-                <div class="post-body">
-                  <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  <p> <img src="{% static 'img/featured-pic-3.jpeg'%}" alt="..." class="img-fluid"></p>
-                  <h3>Lorem Ipsum Dolor</h3>
-                  <p>div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus iusto voluptates deleniti similique rerum ducimus sint ex odio saepe. Sapiente quae pariatur ratione quis perspiciatis deleniti accusantium</p>
-                  <blockquote class="blockquote">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                    <footer class="blockquote-footer">Someone famous in
-                      <cite title="Source Title">Source Title</cite>
-                    </footer>
-                  </blockquote>
-                  <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
-                </div>
-                <div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
-                <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
-                    <div class="icon prev"><i class="fa fa-angle-left"></i></div>
-                    <div class="text"><strong class="text-primary">Previous Post </strong>
-                      <h6>I Bought a Wedding Dress.</h6>
-                    </div></a><a href="#" class="next-post text-right d-flex align-items-center justify-content-end">
-                    <div class="text"><strong class="text-primary">Next Post </strong>
-                      <h6>I Bought a Wedding Dress.</h6>
-                    </div>
-                    <div class="icon next"><i class="fa fa-angle-right">   </i></div></a></div>
-                <div class="post-comments">
-                  <header>
-                    <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
-                  </header>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{% static 'img/user.svg'%}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{% static 'img/user.svg'%}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                  </div>
-                  <div class="comment">
-                    <div class="comment-header d-flex justify-content-between">
-                      <div class="user d-flex align-items-center">
-                        <div class="image"><img src="{% static 'img/user.svg'%}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
-                      </div>
-                    </div>
-                    <div class="comment-body">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="add-comment">
-                  <header>
-                    <h3 class="h6">Leave a reply</h3>
-                  </header>
-                  <form action="#" class="commenting-form">
-                    <div class="row">
-                      <div class="form-group col-md-6">
-                        <input type="text" name="username" id="username" placeholder="Name" class="form-control">
-                      </div>
-                      <div class="form-group col-md-6">
-                        <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
-                      </div>
-                      <div class="form-group col-md-12">
-                        <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
-                      </div>
-                      <div class="form-group col-md-12">
-                        <button type="submit" class="btn btn-secondary">Submit Comment</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
-        <aside class="col-lg-4">
-          <!-- Widget [Search Bar Widget]-->
-          <div class="widget search">
-            <header>
-              <h3 class="h6">Search the blog</h3>
-            </header>
-            <form action="#" class="search-form">
-              <div class="form-group">
-                <input type="search" placeholder="What are you looking for?">
-                <button type="submit" class="submit"><i class="icon-search"></i></button>
-              </div>
-            </form>
-          </div>
-          <!-- Widget [Latest Posts Widget]        -->
-          <div class="widget latest-posts">
-            <header>
-              <h3 class="h6">Latest Posts</h3>
-            </header>
-            <div class="blog-posts"><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="{% static 'img/small-thumbnail-1.jpg'%}" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="icon-eye"></i> 500</div>
-                      <div class="comments"><i class="icon-comment"></i>12</div>
-                    </div>
-                  </div>
-                </div></a><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="{% static 'img/small-thumbnail-2.jpg'%}" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="icon-eye"></i> 500</div>
-                      <div class="comments"><i class="icon-comment"></i>12</div>
-                    </div>
-                  </div>
-                </div></a><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="{% static 'img/small-thumbnail-3.jpg'%}" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="icon-eye"></i> 500</div>
-                      <div class="comments"><i class="icon-comment"></i>12</div>
-                    </div>
-                  </div>
-                </div></a></div>
-          </div>
-          <!-- Widget [Categories Widget]-->
-          <div class="widget categories">
-            <header>
-              <h3 class="h6">Categories</h3>
-            </header>
-            <div class="item d-flex justify-content-between"><a href="#">Growth</a><span>12</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Sales</a><span>8</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Tips</a><span>17</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
-          </div>
-          <!-- Widget [Tags Cloud Widget]-->
-          <div class="widget tags">
-            <header>
-              <h3 class="h6">Tags</h3>
-            </header>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
-            </ul>
-          </div>
-        </aside>
-      </div>
     </div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container"><a href="index.html" class="navbar-brand home"><img src="img/logo.png" alt="Obaju logo"
+                                                                                   class="d-none d-md-inline-block"><img
+                src="img/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+            <div class="navbar-buttons">
+                <button type="button" data-toggle="collapse" data-target="#navigation"
+                        class="btn btn-outline-secondary navbar-toggler"><span
+                        class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
+                <button type="button" data-toggle="collapse" data-target="#search"
+                        class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i
+                        class="fa fa-search"></i></button>
+                <a href="basket.html" class="btn btn-outline-secondary navbar-toggler"><i
+                        class="fa fa-shopping-cart"></i></a>
+            </div>
+            <div id="navigation" class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
+                                                                data-delay="200" class="dropdown-toggle nav-link">Men<b
+                            class="caret"></b></a>
+                        <ul class="dropdown-menu megamenu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Clothing</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">T-shirts</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Shirts</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Pants</a></li>
+                                            <li class="nav-item"><a href="category.html"
+                                                                    class="nav-link">Accessories</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Shoes</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Casual</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Accessories</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Casual</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Casual</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Featured</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                        </ul>
+                                        <h5>Looks and trends</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
+                                                                data-delay="200" class="dropdown-toggle nav-link">Ladies<b
+                            class="caret"></b></a>
+                        <ul class="dropdown-menu megamenu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Clothing</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">T-shirts</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Shirts</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Pants</a></li>
+                                            <li class="nav-item"><a href="category.html"
+                                                                    class="nav-link">Accessories</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Shoes</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Casual</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Accessories</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Casual</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Casual</a>
+                                            </li>
+                                        </ul>
+                                        <h5>Looks and trends</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Trainers</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Sandals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Hiking
+                                                shoes</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="banner"><a href="#"><img src="img/banner.jpg" alt=""
+                                                                             class="img img-fluid"></a></div>
+                                        <div class="banner"><a href="#"><img src="img/banner2.jpg" alt=""
+                                                                             class="img img-fluid"></a></div>
+                      </div>
+                    </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown"
+                                                                data-delay="200" class="dropdown-toggle nav-link">Template<b
+                            class="caret"></b></a>
+                        <ul class="dropdown-menu megamenu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Shop</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="index.html" class="nav-link">Homepage</a></li>
+                                            <li class="nav-item"><a href="category.html" class="nav-link">Category -
+                                                sidebar left</a></li>
+                                            <li class="nav-item"><a href="category-right.html" class="nav-link">Category
+                                                - sidebar right</a></li>
+                                            <li class="nav-item"><a href="category-full.html" class="nav-link">Category
+                                                - full width</a></li>
+                                            <li class="nav-item"><a href="detail.html" class="nav-link">Product
+                                                detail</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>User</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="register.html" class="nav-link">Register /
+                                                login</a></li>
+                                            <li class="nav-item"><a href="customer-orders.html" class="nav-link">Orders
+                                                history</a></li>
+                                            <li class="nav-item"><a href="customer-order.html" class="nav-link">Order
+                                                history detail</a></li>
+                                            <li class="nav-item"><a href="customer-wishlist.html" class="nav-link">Wishlist</a>
+                                            </li>
+                                            <li class="nav-item"><a href="customer-account.html" class="nav-link">Customer
+                                                account / change password</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Order process</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="basket.html" class="nav-link">Shopping
+                                                cart</a></li>
+                                            <li class="nav-item"><a href="checkout1.html" class="nav-link">Checkout -
+                                                step 1</a></li>
+                                            <li class="nav-item"><a href="checkout2.html" class="nav-link">Checkout -
+                                                step 2</a></li>
+                                            <li class="nav-item"><a href="checkout3.html" class="nav-link">Checkout -
+                                                step 3</a></li>
+                                            <li class="nav-item"><a href="checkout4.html" class="nav-link">Checkout -
+                                                step 4</a></li>
+                                        </ul>
+                      </div>
+                                    <div class="col-md-6 col-lg-3">
+                                        <h5>Pages and blog</h5>
+                                        <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="blog.html" class="nav-link">Blog listing</a>
+                                            </li>
+                                            <li class="nav-item"><a href="post.html" class="nav-link">Blog Post</a></li>
+                                            <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                                            <li class="nav-item"><a href="text.html" class="nav-link">Text page</a></li>
+                                            <li class="nav-item"><a href="text-right.html" class="nav-link">Text page -
+                                                right sidebar</a></li>
+                                            <li class="nav-item"><a href="404.html" class="nav-link">404 page</a></li>
+                                            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                    </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-buttons d-flex justify-content-end">
+                    <!-- /.nav-collapse-->
+                    <div id="search-not-mobile" class="navbar-collapse collapse"></div>
+                    <a data-toggle="collapse" href="#search"
+                       class="btn navbar-btn btn-primary d-none d-lg-inline-block"><span
+                            class="sr-only">Toggle search</span><i class="fa fa-search"></i></a>
+                    <div id="basket-overview" class="navbar-collapse collapse d-none d-lg-block"><a href="basket.html"
+                                                                                                    class="btn btn-primary navbar-btn"><i
+                            class="fa fa-shopping-cart"></i><span>3 items in cart</span></a></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="search" class="collapse">
+        <div class="container">
+            <form role="search" class="ml-auto">
+                <div class="input-group">
+                    <input type="text" placeholder="Search" class="form-control">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </header>
+    <div id="all">
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- breadcrumb-->
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
+                                <li aria-current="page" class="breadcrumb-item active">Blog post</li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <div id="blog-post" class="col-lg-9">
+                        <div class="box">
+                            <h1>Fashion now</h1>
+                            <p class="author-date">By <a href="#">John Slim</a> | June 20, 2013</p>
+                            <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi
+                                tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
+                                quam, feugiat vitae, ultricies eget.</p>
+                            <div id="post-content">
+                                <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada
+                                    fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+                                    tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean
+                                        ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est
+                                    et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo
+                                        vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt
+                                    condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec
+                                        non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+                                <p><img src="img/blog2.jpg" alt="Example blog post alt" class="img-fluid"></p>
+                                <h2>Header Level 2</h2>
+                                <ol>
+                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                                    <li>Aliquam tincidunt mauris eu risus.</li>
+                                </ol>
+                                <blockquote class="blockquote">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in
+                                        mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur
+                                        massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus,
+                                        at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+                                </blockquote>
+                                <h3>Header Level 3</h3>
+                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                                    egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet,
+                                    ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+                                    Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+                                    Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean
+                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
+                                    lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent
+                                    dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna
+                                    eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+                                    facilisis luctus, metus</p>
+                                <ul>
+                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+                                    <li>Aliquam tincidunt mauris eu risus.</li>
+                                </ul>
+                                <p><img src="img/blog.jpg" alt="Example blog post alt" class="img-fluid"></p>
+                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
+                                    egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet,
+                                    ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+                                    Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+                                    Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean
+                                    fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus
+                                    lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent
+                                    dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna
+                                    eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor,
+                                    facilisis luctus, metus</p>
+                            </div>
+                            <!-- /#post-content-->
+                            <div id="comments">
+                                <h4>2 comments</h4>
+                                <div class="row comment">
+                                    <div class="col-md-3 col-lg-2 text-center text-md-center">
+                                        <p><img src="img/blog-avatar2.jpg" alt="" class="img-fluid rounded-circle"></p>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">
+                                        <h5>Julie Alma</h5>
+                                        <p class="posted"><i class="fa fa-clock-o"></i> September 23, 2011 at 12:00 am
+                                        </p>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                                            turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+                                            tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                                        <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a></p>
+                                    </div>
+                                </div>
+                                <!-- /.comment-->
+                                <div class="row comment last">
+                                    <div class="col-md-3 col-lg-2 text-center text-md-center">
+                                        <p><img src="img/blog-avatar.jpg" alt="" class="img-fluid rounded-circle"></p>
+                                    </div>
+                                    <div class="col-md-9 col-lg-10">
+                                        <h5>Louise Armero</h5>
+                                        <p class="posted"><i class="fa fa-clock-o"></i> September 23, 2012 at 12:00 am
+                                        </p>
+                                        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
+                                            turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+                                            tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
+                                            ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                                        <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a></p>
+                                    </div>
+                                </div>
+                                <!-- /.comment-->
+                </div>
+                            <!-- /#comments-->
+                            <div id="comment-form">
+                                <h4>Leave comment</h4>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="name">Name <span class="required">*</span></label>
+                                                <input id="name" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Email <span class="required">*</span></label>
+                                                <input id="email" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="comment">Comment <span class="required">*</span></label>
+                                                <textarea id="comment" rows="4" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <button class="btn btn-primary"><i class="fa fa-comment-o"></i> Post comment
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /#comment-form-->
+                        </div>
+                        <!-- /.box-->
+                    </div>
+                    <!-- /#blog-post-->
+                    <div class="col-lg-3">
+                        <!--
+                        *** BLOG MENU ***
+                        _________________________________________________________
+                        -->
+                        <div class="card sidebar-menu mb-4">
+                            <div class="card-header">
+                                <h3 class="h4 panel-title">Blog</h3>
+                            </div>
+                            <div class="card-body">
+                                <ul class="nav flex-column nav-pills">
+                                    <li><a href="blog.html" class="nav-link">About us</a></li>
+                                    <li><a href="blog.html" class="nav-link active">Fashion</a></li>
+                                    <li><a href="blog.html" class="nav-link">News and gossip</a></li>
+                                    <li><a href="blog.html" class="nav-link">Design</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.col-lg-3-->
+                        <!-- *** BLOG MENU END ***-->
+                        <div class="banner"><a href="#"><img src="img/banner.jpg" alt="sales 2014"
+                                                             class="img-fluid"></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </html>
 {% endblock %}

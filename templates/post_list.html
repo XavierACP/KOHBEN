@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{%  block content %}
+{% block content %}
 
     <div id="all">
         <div id="content">
@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                                 <!-- /.comment-->
-                </div>
+                            </div>
                             <!-- /#comments-->
                             <div id="comment-form">
                                 <h4>Leave comment</h4>
@@ -164,7 +164,7 @@
                             </div>
                             <div class="card-body">
                                 <ul class="nav flex-column nav-pills">
-                                    <li><a href="blog.html" class="nav-link">About us</a></li>
+                                    <li><a href="{% url 'about' %}" class="nav-link">About us</a></li>
                                     <li><a href="blog.html" class="nav-link active">Fashion</a></li>
                                     <li><a href="blog.html" class="nav-link">News and gossip</a></li>
                                     <li><a href="blog.html" class="nav-link">Design</a></li>

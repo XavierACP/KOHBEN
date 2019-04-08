@@ -41,7 +41,7 @@
                 <div class="col-lg-6 text-center text-lg-right">
                     <ul class="menu list-inline mb-0">
                         <li class="list-inline-item"><a href="{% url 'register' %}">S'enregistrer</a></li>
-                        <li class="list-inline-item"><a href="{% url 'post' %}">Post</a></li>
+                        <li class="list-inline-item"><a href="{% url 'post_list' %}">Post</a></li>
                         <li class="list-inline-item"><a href="{% url 'contact' %}">Contact</a></li>
                         <li class="list-inline-item"><a href="{% url 'about' %}">About</a></li>
                         <li class="list-inline-item"><a href="#"></a></li>
@@ -55,12 +55,12 @@
                 </div>
             </div>
         </div>
-        {#to see the connetion page:#}
+        {#to see the connection page:#}
         <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Customer login</h5>
+                        <h5 class="modal-title">Connection</h5>
                         <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                                 aria-hidden="true">×</span></button>
                     </div>
@@ -112,7 +112,7 @@
                 <img src="{% static 'img/logo.png' %}" alt="Obaju logo" class="d-none d-md-inline-block">
                 <img src="{% static 'img/logo-small.png' %}" alt="Obaju logo"
                      class="d-inline-block d-md-none">
-                <span class="sr-only">Obaju - go to homepage</span>
+                <span class="sr-only">Kohben - Aller à la page d'acceuil</span>
             </a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation"
@@ -128,10 +128,10 @@
             <div id="navigation" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a href="{% url 'index' %}" class="nav-link active">Home</a></li>
-                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown"
-                                                                data-hover="dropdown" data-delay="200"
-                                                                class="dropdown-toggle nav-link">Homme<b
-                            class="caret"></b></a>
+                    <li class="nav-item dropdown menu-large">
+                        <a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200"
+                           class="dropdown-toggle nav-link">Homme<b class="caret"></b>
+                        </a>
                         <ul class="dropdown-menu megamenu">
                             <li>
                                 <div class="row">

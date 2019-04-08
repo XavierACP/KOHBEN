@@ -14,7 +14,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import resolve_url
 from django.utils.encoding import force_text
 from django.utils.http import is_safe_url, urlsafe_base64_decode
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from django.contrib.auth import (
     REDIRECT_FIELD_NAME, get_user_model, login as auth_login,
     logout as auth_logout, update_session_auth_hash,
@@ -27,7 +27,10 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.debug import sensitive_post_parameters
 from django.contrib.auth.decorators import login_required
 
+from sales.models import Post
 
+
+# generals views:
 class IndexView(TemplateView):
     template_name = 'index.html'
 
@@ -48,6 +51,8 @@ class ContactView(TemplateView):
     template_name = 'contact.html'
 
 
+# *********************************************************************
+# Connection and register views:
 class LoginView(SuccessURLAllowedHostsMixin, FormView):
     """
     Display the login form and handle the login action.
@@ -174,6 +179,26 @@ class RegisterView(FormView):
 class RegisterOk(TemplateView):
     template_name = 'registerOk.html'
 
+
+# *********************************************************************
+# Post views:
+
+
+class PostListView(ListView):
+    model = Post
+    template_name = "post_list.html"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(PostListView, self).get_context_data(**kwargs)
+        desired_fields = []
+        for field in Post._meta.get_fields():
+            if field.name in ['author', 'title', 'text', 'created_date', 'published_date']:
+                desired_fields.append(field)
+        context['fields'] = desired_fields
+        return context
+
+# *********************************************************************
+# With email needed views:
 # # For password reset view:
 # @csrf_protect
 # def password_reset(request, is_admin_site=False,

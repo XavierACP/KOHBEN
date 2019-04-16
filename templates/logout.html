@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+<title>{% block title %}Page logout.html{% endblock %}</title>
 {% block content %}
 <div>
 
@@ -15,7 +15,7 @@
     window.setTimeout(function(){
         // Move to a new location or you can do something else
         window.location.href = "{% url 'index' %}";
-    }, 2000);
+    }, 1000);
 
 </script>
 </div>

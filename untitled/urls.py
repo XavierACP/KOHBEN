@@ -13,20 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
+from django.contrib.auth import views
 from django.contrib.auth.views import LogoutView, LoginView
-from sales.views import IndexView, BlogView, PostView, RegisterView, AboutView, ContactView, RegisterOk, PostListView
-from django.contrib.auth import views as auth_views
+from django.urls import path, include
 
+from sales.views import IndexView, PostView, RegisterView, AboutView, ContactView, RegisterOk, PostListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('index', IndexView.as_view(), name='index'),
-    # path('blog', BlogView.as_view(), name='blog'),
-    # path('post', PostView.as_view(), name='post'),
     path('about', AboutView.as_view(), name='about'),
     path('contact', ContactView.as_view(), name='contact'),
     path('login', PostView.as_view(), name='post'),
@@ -35,15 +34,8 @@ urlpatterns = [
     url(r'register', RegisterView.as_view(), name='register'),
     path('regOk', RegisterOk.as_view(), name='registerOk'),
     path('accounts/post/list', PostListView.as_view(), name='post_list'),
+    path('regOk', RegisterOk.as_view(), name='registerOk'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/password_reset/$', views.PasswordResetView.as_view(), name='password_reset'),
 
-    #     path('regOk', RegisterOk.as_view(), name='registerOk'),
-# # for password reset views:
-#     url('^', include('django.contrib.auth.urls')),
-#     url(r'^password_reset/$', auth_views.PasswordResetView, {'template_name': 'accounts/password_reset_form'},
-#         name='password_reset'),
-#     url(r'^password_reset/done/$', auth_views.PasswordResetDoneView, name='password_reset_done'),
-#     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-#         auth_views.PasswordResetConfirmView, name='password_reset_confirm'),
-#     url(r'^reset/done/$', auth_views.PasswordResetCompleteView, name='password_reset_complete'),
-#     url(r'^password_reset_form/$', auth_views.PasswordResetView, name='password_reset_form'),
 ]

@@ -12,6 +12,13 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+# Gestion feature:
+# import ldclient
+# # show_feature = ldclient.get().variation("your.flag.key", {"key": "benetx@yahoo.fr"}, False)
+# show_feature = ldclient.get().variation("testFlag.key", {"key": "benetx@yahoo.fr"}, False)
+# show_feature2 = ldclient.get().variation("new_Flag.key", {"key": "benetx@yahoo.fr"}, False)
+# ldclient.set_sdk_key("sdk-4256a9b8-d323-4943-b8ac-b057014807c4")
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -55,8 +62,7 @@ ROOT_URLCONF = 'untitled.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,7 +131,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_URL = '/static/'
 # Gerer les connections:
 LOGIN_URL = '/'
@@ -133,9 +138,18 @@ LOGIN_URL = '/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
-
 LOGIN_REDIRECT_URL = 'index'
 
-
 TEMPLATES_DIRS = (BASE_DIR + 'templates/',)
+# Gestion reinitialisation pwd :
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+# EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+
+# SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
+# Toggle sandbox mode (when running in DEBUG mode)
+# SENDGRID_SANDBOX_MODE_IN_DEBUG =True
+
+# echo to stdout or any other file-like object that is passed to the backend via the stream kwarg.
+# SENDGRID_ECHO_TO_STDOUT =True

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+<title>{% block title %}Page registerOk.html{% endblock %}</title>
 {% block content %}
     <!-- Font Icon -->
 {#    <link rel="stylesheet" href="{% static 'regForm/fonts/material-icon/css/material-design-iconic-font.min.css'%}">#}
@@ -18,7 +18,7 @@
                         <script>
                             window.setTimeout(function(){
                             window.location.href = "{% url 'index' %}";
-                                }, 10000);
+                            }, 2000);
                         </script>
                      </form>
                 </div>

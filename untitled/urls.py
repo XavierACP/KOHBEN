@@ -20,7 +20,8 @@ from django.contrib.auth import views
 from django.contrib.auth.views import LogoutView, LoginView
 from django.urls import path, include
 
-from sales.views import IndexView, PostView, RegisterView, AboutView, ContactView, RegisterOk, PostListView
+from sales.views import IndexView, PostView, RegisterView, AboutView, ContactView, RegisterOk, PostListView, \
+    PersonListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,5 +38,5 @@ urlpatterns = [
     path('regOk', RegisterOk.as_view(), name='registerOk'),
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/password_reset/$', views.PasswordResetView.as_view(), name='password_reset'),
-
+    path('person/list', PersonListView.as_view(), name='person_list'),
 ]

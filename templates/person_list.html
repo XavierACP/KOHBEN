@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{#{% load static %}#}
+
+<title>{% block title %}Page person_list.html{% endblock %}</title>
+{% block content %}
+    {% for person in Person %}
+        <tr class="row100 body">
+            {#{{  person.user.get_username }}#}
+            <td class="cell100 column1" style=" padding-right: 40px">{{ person.user.first_name }}&nbsp;</td>
+            {#            <td class="cell100 column4" style=" padding-right: 40px">{{ object.user.first_name}}</td>#}
+            {#            <td class="cell100 column5" style=" padding-right: 40px">{{ object.user.email }}</td>#}
+            {#            <td class="cell100 column2" style=" padding-right: 40px">{{ object.user.username }}</td>#}
+            {#            <td class="cell100 column2" style=" padding-right: 40px">{{ object.sex }}</td>#}
+            {#            <td class="cell100 column3" style=" padding-right: 40px">{{ object.avatar }}</td>#}
+            <td class="cell100 column8"><a class="btn btn-light" href="#">Details</a></td>
+            <td class="cell100 column9"><a class="btn btn-light" href="#">Modifier</a></td>
+            <td class="cell100 column10"><a class="btn btn-warning" href="#">Supprimer</a></td>
+        </tr>
+        {% if not forloop.last %}
+            <br>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+

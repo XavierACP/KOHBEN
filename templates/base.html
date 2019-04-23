@@ -37,8 +37,16 @@
     <div id="top">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offre du jour</a><a
-                        href="#" class="ml-1">-35% à partir de 50€ d'achat !</a></div>
+                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">Offre du jour</a>
+                    <a href="#" class="ml-1">-35% à partir de 50€ d'achat !</a>
+                    {% if request.user.is_authenticated %}
+                        <p STYLE="padding:0 0 0 100%; margin-left : auto; margin-right : auto; width :100%; color: #1da1f2 ">
+                            Bienvenue {{ user.first_name | upper }}</p>
+                    {% endif %}
+                </div>
+                <div>
+
+                </div>
                 <div class="col-lg-6 text-center text-lg-right">
                     <ul class="menu list-inline mb-0">
                         {#Gestion Feature:#}
@@ -56,9 +64,6 @@
                             <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal">Se
                                 connecter</a></li>
                         {% endif %}
-
-
-                        {#    {% endif %}#}
 
                     </ul>
                 </div>
@@ -364,6 +369,84 @@
                             </li>
                         </ul>
                     </li>
+                    {#                    AJOUT ADMIN:#}
+                    {% if request.user.is_authenticated and request.user.email == "caroline.kohser@yahoo.fr" %}
+                        <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown"
+                                                                    data-hover="dropdown" data-delay="200"
+                                                                    class="dropdown-toggle nav-link">Administration<b
+                                class="caret"></b></a>
+                            <ul class="dropdown-menu megamenu">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-3">
+                                            <h5>Utilisateurs</h5>
+                                            <ul class="list-unstyled mb-3">
+                                                <li class="nav-item"><a href="{% url 'person_list' %}" class="nav-link">Liste</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Suppression</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Ajout</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html"
+                                                                        class="nav-link">Modification</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <h5>Posts</h5>
+                                            <ul class="list-unstyled mb-3">
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Liste</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Suppression</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Modification</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <h5>Ventes</h5>
+                                            <ul class="list-unstyled mb-3">
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Liste</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">En
+                                                    cours</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html"
+                                                                        class="nav-link">Terminées</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html"
+                                                                        class="nav-link">Modifier</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Ajouter
+                                                </a></li>
+                                                <li class="nav-item"><a href="category.html"
+                                                                        class="nav-link">Supprimer</a>
+                                                </li>
+                                            </ul>
+                                            <h5>Articles</h5>
+                                            <ul class="list-unstyled mb-3">
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Ajout</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Suppression</a>
+                                                </li>
+                                                <li class="nav-item"><a href="category.html" class="nav-link">Modification</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6 col-lg-3">
+                                            <div class="banner"><a href="#"><img
+                                                    src="{% static 'img/banner.jpg' %}" alt=""
+                                                    class="img img-fluid"></a></div>
+                                            <div class="banner"><a href="#"><img
+                                                    src="{% static 'img/banner2.jpg' %}" alt=""
+                                                    class="img img-fluid"></a></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        {#                    FIN ADMIN#}
+                    {% endif %}
                 </ul>
                 <div class="navbar-buttons d-flex justify-content-end">
                     <!-- /.nav-collapse-->
@@ -405,8 +488,8 @@
 _________________________________________________________
 -->
 {#Gestion Feature sur pied de page#}
-{% if show_feature2 %}
-{% else %}
+{#{% if show_feature2 %}#}
+{#{% else %}#}
 
 <div id="footer">
     <div class="container">
@@ -479,7 +562,7 @@ _________________________________________________________
 </div>
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
-{% endif %}
+{#{% endif %}#}
 {#Gestion Feature sur pied de page#}
 <!--
 *** COPYRIGHT ***

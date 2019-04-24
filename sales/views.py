@@ -6,13 +6,13 @@ from django.contrib.auth.forms import (AuthenticationForm)
 from django.contrib.auth.views import SuccessURLAllowedHostsMixin
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponseRedirect
-from django.shortcuts import resolve_url
+from django.shortcuts import resolve_url, render
 from django.urls import reverse_lazy
 from django.utils.http import is_safe_url
 from django.views.generic import TemplateView, FormView, ListView
 
 from sales.forms.register import RegisterForm
-from sales.models import Post
+from sales.models import Post, Person, Category
 
 
 # generals views:
@@ -181,6 +181,49 @@ class PostListView(ListView):
                 desired_fields.append(field)
         context['fields'] = desired_fields
         return context
+
+
+def post_list(request):
+    return render(request, 'post_list.html', {})
+
+
+# *********************************************************************
+
+# Views of differents lists:
+class CategoryListView(ListView):
+    model = Category
+    template_name = "category_list.html"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        desired_fields = []
+        for field in Post._meta.get_fields():
+            if field.name in ['name', 'description']:
+                desired_fields.append(field)
+        context['fields'] = desired_fields
+        return context
+
+
+def category_list(request):
+    return render(request, 'category_list.html', {})
+
+
+class PersonListView(ListView):
+    model = Person
+    template_name = "person_list.html"
+
+    def get_context_data(self, *, object_list=Person, **kwargs):
+        context = super(PersonListView, self).get_context_data(**kwargs)
+        desired_fields = ['first-name']
+        for field in Person._meta.get_fields():
+            if field.name in ['login', 'first_name', 'last_name', 'email']:
+                desired_fields.append(field)
+        context['fields'] = desired_fields
+        return context
+
+
+def user_list(request):
+    return render(request, "person_list.html", {})
 
 # *********************************************************************
 # With email needed views:

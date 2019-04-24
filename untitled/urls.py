@@ -21,7 +21,7 @@ from django.contrib.auth.views import LogoutView, LoginView
 from django.urls import path, include
 
 from sales.views import IndexView, PostView, RegisterView, AboutView, ContactView, RegisterOk, PostListView, \
-    PersonListView
+    PersonListView, CategoryListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,7 +35,8 @@ urlpatterns = [
     url(r'register', RegisterView.as_view(), name='register'),
     path('regOk', RegisterOk.as_view(), name='registerOk'),
     path('accounts/post/list', PostListView.as_view(), name='post_list'),
-    path('regOk', RegisterOk.as_view(), name='registerOk'),
+    path('accounts/post', PostView.as_view(), name='post_view'),
+    path('category/list', CategoryListView.as_view(), name='category_list'),
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/password_reset/$', views.PasswordResetView.as_view(), name='password_reset'),
     path('person/list', PersonListView.as_view(), name='person_list'),

@@ -3,10 +3,9 @@
 
 <title>{% block title %}Page person_list.html{% endblock %}</title>
 {% block content %}
-    {% for person in Person %}
+    {% for object in object_list %}
         <tr class="row100 body">
-            {#{{  person.user.get_username }}#}
-            <td class="cell100 column1" style=" padding-right: 40px">{{ person.user.first_name }}&nbsp;</td>
+            <td class="cell100 column1" style=" padding-right: 40px">{{ object.first_name }}&nbsp;</td>
             {#            <td class="cell100 column4" style=" padding-right: 40px">{{ object.user.first_name}}</td>#}
             {#            <td class="cell100 column5" style=" padding-right: 40px">{{ object.user.email }}</td>#}
             {#            <td class="cell100 column2" style=" padding-right: 40px">{{ object.user.username }}</td>#}

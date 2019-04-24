@@ -11,30 +11,20 @@
                         <!-- breadcrumb-->
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item"><a href="blog.html">Blog</a></li>
-                                <li aria-current="page" class="breadcrumb-item active">Blog post</li>
+                                <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'post_list' %}">Posts</a></li>
                             </ol>
                         </nav>
                     </div>
+                    {% for post in post_list %}
                     <div id="blog-post" class="col-lg-9">
                         <div class="box">
-                            <h1>Fashion now</h1>
-                            <p class="author-date">By <a href="#">John Slim</a> | June 20, 2013</p>
-                            <p class="lead">This is the lead paragraph of the article. Pellentesque habitant morbi
-                                tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor
-                                quam, feugiat vitae, ultricies eget.</p>
+                            <h1>{{ post.title }}</h1>
+                            <p class="author-date">By <a href="#">{{ post.author }}</a> | {{ post.published_date }}</p>
+                            <p class="lead"></p>
                             <div id="post-content">
-                                <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada
-                                    fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
-                                    tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean
-                                        ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est
-                                    et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo
-                                        vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt
-                                    condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec
-                                        non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
-                                <p><img src="{% static 'img/blog2.jpg' %}" alt="Example blog post alt"
-                                        class="img-fluid"></p>
+                                <p><strong>{{ post.text }}</strong></p>
+                                <p><{{ post.myPhoto }} </p>
                                 <h2>Header Level 2</h2>
                                 <ol>
                                     <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
@@ -152,6 +142,7 @@
                         </div>
                         <!-- /.box-->
                     </div>
+                    {% endfor %}
                     <!-- /#blog-post-->
                     <div class="col-lg-3">
                         <!--

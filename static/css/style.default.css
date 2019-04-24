@@ -474,9 +474,10 @@ h1 {
   background: #fff;
   margin: 0 0 30px;
   border: solid 1px #e6e6e6;
-  padding: 20px;
+    padding: 30px;
   -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+
 }
 
 .box .box-header {

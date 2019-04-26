@@ -8,6 +8,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponseRedirect
 from django.shortcuts import resolve_url, render
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.utils.http import is_safe_url
 from django.views.generic import TemplateView, FormView, ListView
 
@@ -34,6 +35,18 @@ class AboutView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = 'contact.html'
+
+
+class SoapView(TemplateView):
+    template_name = 'postByCateg/soap.html'
+
+
+class BodyCreamView(TemplateView):
+    template_name = 'postByCateg/bodyCream.html'
+
+
+class FaceCreamView(TemplateView):
+    template_name = 'postByCateg/faceCream.html'
 
 
 # *********************************************************************
@@ -177,14 +190,16 @@ class PostListView(ListView):
         context = super(PostListView, self).get_context_data(**kwargs)
         desired_fields = []
         for field in Post._meta.get_fields():
-            if field.name in ['author', 'title', 'text', 'created_date', 'published_date']:
+            if field.name in ['author', 'title', 'text', 'created_date', 'published_date', 'myPhoto']:
                 desired_fields.append(field)
         context['fields'] = desired_fields
         return context
 
 
 def post_list(request):
-    return render(request, 'post_list.html', {})
+    # Queryset:
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'post_list.html', {'posts': posts})
 
 
 # *********************************************************************

@@ -31,8 +31,10 @@ class Post(models.Model):
     text = models.TextField(default="Nothing")
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    myPhoto = models.ImageField(upload_to='static/img', default='blog-1.jpg')
+    myPhoto = models.ImageField(upload_to='static/img/img_post/', default='blog-1.jpg')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default="")
+    allow_comments = models.BooleanField(default=True, verbose_name="allow comments")
+    comment_count = models.IntegerField(blank=True, default=0, verbose_name='comment count')
 
     def publish(self):
         self.published_date = timezone.now()

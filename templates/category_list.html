@@ -13,69 +13,86 @@
             </div>
         </div>
     </div>
-    {% for categ in category_list %}
-        <div id="advantages">
-            <div class="container">
-                <div class="row mb-4" style="display: flex; justify-content: space-around;">
-                    <div class="col-md-4">
-                        <div class="box clickable d-flex flex-column justify-content-center mb-1 h-100">
-                            <div class="icon"><i class="fa fa-heart"></i></div>
-                            <h3><a href="#">{{ categ.name }}</a></h3>
-                            <p class="mb-0">{{ categ.description }}</p>
-                            {% if request.user.is_authenticated %}
-                                <br>
-                                <br>
-                                <div class="navbar-collapse collapse d-none d-lg-block">
-                                    <a href="#" class="btn btn-primary navbar-btn"><span>Modifier</span></a>
-                                    <a href="#" class="btn btn-primary navbar-btn"><span>Supprimer</span></a>
-                                </div>
-                            {% endif %}
+    {#    For icons please choose at https://fontawesome.com/v4.7.0/icons/#}
+    <div id="all">
+        <div id="content">
+            <div id="advantages">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                                <div class="icon"><i class="fa fa-heart"></i></div>
+                                <h3><a href="{% url 'soap' %}">Savons</a></h3>
+                                <p class="mb-0">Vous désirez tout savoir sur les savons ?</p>
+                                {% if request.user.is_authenticated %}
+                                    <br>
+                                    <br>
+                                    <div class="navbar-collapse collapse d-none d-lg-block">
+                                        <a href="#" class="btn btn-primary navbar-btn"><span>Modifier</span></a>
+                                        <a href="#" class="btn btn-primary navbar-btn"><span>Supprimer</span></a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                                <div class="icon"><i class="fa fa-tags"></i></div>
+                                <h3><a href="{% url 'face_cream' %}">Crèmes visage</a></h3>
+                                <p class="mb-0">Tout pour le visage</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                                <div class="icon"><i class="fa fa-thumbs-up"></i></div>
+                                <h3><a href="{% url 'body_cream' %}">Crèmes corps</a></h3>
+                                <p class="mb-0">pour un corps doux ...</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <div id="all">
+        <div id="content">
+            <div id="advantages">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                                <div class="icon"><i class="fa fa-heart-o"></i></div>
+                                <h3><a href="{% url 'soap' %}">Lessive</a></h3>
+                                <p class="mb-0">Vous désirez tout savoir sur les savons ?</p>
+                                {% if request.user.is_authenticated %}
+                                    <br>
+                                    <br>
+                                    <div class="navbar-collapse collapse d-none d-lg-block">
+                                        <a href="#" class="btn btn-primary navbar-btn"><span>Modifier</span></a>
+                                        <a href="#" class="btn btn-primary navbar-btn"><span>Supprimer</span></a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                                <div class="icon"><i class="fa fa-bath"></i></div>
+                                <h3><a href="{% url 'face_cream' %}">Adoucissant</a></h3>
+                                <p class="mb-0">Tout pour le visage</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">
+                                <div class="icon"><i class="fa fa-child"></i></div>
+                                <h3><a href="{% url 'body_cream' %}">Détergent</a></h3>
+                                <p class="mb-0">pour un corps doux ...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-
-        {#    		<script type="text/javascript">#}
-        {#			var i = 0;#}
-        {#			function addCateg()#}
-        {#			{#}
-        {#				if (i < 3)#}
-        {#				{#}
-        {#				    var newRow = document.createElement('div');#}
-        {##}
-        {#					newRow.innerHTML = '<div id="kids">' +#}
-        {#                        '<div class="row mb-4">' +#}
-        {#                        '<div class="col-md-4">' +#}
-        {#                        '<div class="box clickable d-flex flex-column justify-content-center mb-0 h-100">' +#}
-        {#                        '<div class="icon"><i class="fa fa-heart"></i>' +#}
-        {#                        '</div><h3><a href="#" style="margin:0 auto;">'+'{{ categ.name }}'+'</a></h3>' +#}
-        {#                        '<p class="mb-0">{{ categ.description }}</p></div></div></div></div></div>';#}
-        {##}
-        {#					document.getElementById('kids').appendChild(newRow);#}
-        {#					i++;#}
-        {#				}#}
-        {#				else {#}
-        {#				    newRow = document.createElement('tr');#}
-        {#                    i=0;#}
-        {##}
-        {#                }#}
-        {#			}#}
-        {##}
-        {#			function removeKid(element)#}
-        {#			{#}
-        {#				document.getElementById('kids').removeChild(element.parentNode);#}
-        {#				i--;#}
-        {#			}#}
-        {##}
-        {#		</script>#}
-
-        {##}
-
-
-    {% endfor %}
 {% endblock %}
 
 

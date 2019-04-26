@@ -14,14 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.conf import settings
 from django.conf.urls import url
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth import views
 from django.contrib.auth.views import LogoutView, LoginView
 from django.urls import path, include
 
 from sales.views import IndexView, PostView, RegisterView, AboutView, ContactView, RegisterOk, PostListView, \
-    PersonListView, CategoryListView
+    PersonListView, CategoryListView, SoapView, BodyCreamView, FaceCreamView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,4 +42,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     url(r'^accounts/password_reset/$', views.PasswordResetView.as_view(), name='password_reset'),
     path('person/list', PersonListView.as_view(), name='person_list'),
-]
+                  path('postByCateg/soap', SoapView.as_view(), name='soap'),
+                  path('postByCateg/bodyCream', BodyCreamView.as_view(), name='body_cream'),
+                  path('postByCateg/faceCream', FaceCreamView.as_view(), name='face_cream'),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

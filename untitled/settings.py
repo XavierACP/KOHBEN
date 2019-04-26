@@ -78,12 +78,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'untitled.wsgi.application'
 
 #For email sending:
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com' # mail service smtp
-# EMAIL_HOST_USER = 'tribubenet@gmail.com' # email id
-# EMAIL_HOST_PASSWORD = "1c'estbien" #password
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -130,26 +125,23 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
-STATIC_URL = '/static/'
-# Gerer les connections:
-LOGIN_URL = '/'
 
+STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+# Gerer les connections:
+LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = 'index'
 
 TEMPLATES_DIRS = (BASE_DIR + 'templates/',)
-# Gestion reinitialisation pwd :
 
+# Gestion reinitialisation pwd :
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
-# EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
-# SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
-# Toggle sandbox mode (when running in DEBUG mode)
-# SENDGRID_SANDBOX_MODE_IN_DEBUG =True
+# To get images for the posts:
 
-# echo to stdout or any other file-like object that is passed to the backend via the stream kwarg.
-# SENDGRID_ECHO_TO_STDOUT =True
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
